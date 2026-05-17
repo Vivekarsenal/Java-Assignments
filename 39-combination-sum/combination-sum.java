@@ -12,11 +12,7 @@ class Solution {
         return ds;
     }
 
-    private void findcombination(int idx,
-                                 int target,
-                                 int[] arr,
-                                 List<List<Integer>> ans,
-                                 List<Integer> list) {
+    private void findcombination(int idx,int target,int[] arr, List<List<Integer>> ans, List<Integer> list) {
 
         // BASE CASE
         if (idx == arr.length) {
@@ -34,21 +30,13 @@ class Solution {
             list.add(arr[idx]);
 
             // SAME INDEX because reuse allowed
-            findcombination(idx,
-                            target - arr[idx],
-                            arr,
-                            ans,
-                            list);
+            findcombination(idx,target - arr[idx],arr,ans,list);
 
             // BACKTRACK
             list.remove(list.size() - 1);
         }
 
         // NOT PICK
-        findcombination(idx + 1,
-                        target,
-                        arr,
-                        ans,
-                        list);
+        findcombination(idx + 1, target,arr, ans, list);
     }
 }
