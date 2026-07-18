@@ -9,6 +9,7 @@ class Solution {
     }
     private void backtrack(int[] nums,List<List<Integer>>subset, List<Integer>list, int start){
         subset.add(new ArrayList<>(list));
+
         for(int i=start;i<nums.length;i++){
         list.add(nums[i]);
         backtrack(nums,subset,list,i+1);
