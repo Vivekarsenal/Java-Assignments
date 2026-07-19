@@ -7,7 +7,7 @@ class Solution {
     }
     private void backtrack(int[] nums,List<List<Integer>>subset,List<Integer>list,int start){
          Arrays.sort(nums);
-        if(subset.contains(list))return;
+        // if(subset.contains(list))return;
         subset.add(new ArrayList<>(list));
         
 
