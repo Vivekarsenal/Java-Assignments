@@ -3,21 +3,23 @@ class Solution {
         int n =grid.length;
         int m=grid[0].length;
         int dp[][]= new int [n][m];
-        for (int[] row : dp) {
-            Arrays.fill(row, -1);
+     
+
+      for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(i==0 && j==0)dp[i][j]=grid[i][j];
+            else{
+                int up=grid[i][j];
+                if(i>0)up+=dp[i-1][j];
+                else up+=(int)1e9;
+
+                int left =grid[i][j];
+                if(j>0)left+=dp[i][j-1];
+                else left+=(int)1e9;
+                dp[i][j]=Math.min(up,left);
+            }
         }
-        return func(n-1,m-1,grid,dp);
-    }
-    private int func(int row, int col , int[][]grid, int [][]dp){
-        if(row==0 && col==0)return grid[row][col];
-
-        if(row<0 || col <0) return (int)1e9;
-        if(dp[row][col]!=-1)return dp[row][col];
-
-
-        int up= grid[row][col]+ func(row-1,col,grid,dp);
-        int left=grid[row][col]+func(row,col-1,grid,dp);
-        dp[row][col] = Math.min(up,left);
-        return dp[row][col];
+      }
+       return dp[n-1][m-1];
     }
 }
