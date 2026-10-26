@@ -5,8 +5,9 @@ class Solution {
                     .replaceAll("[^a-z]", " ")
                     .split("\\s+");
         HashMap<String,Integer> map = new HashMap<>();
+        Set<String> banSet = new HashSet<>(Arrays.asList(banned));
         for(String word:words){
-            if(!isbanned(word,banned)){
+            if(!banSet.contains(word)){
                 map.put(word,map.getOrDefault(word,0)+1);
             }
         }
@@ -23,10 +24,5 @@ class Solution {
 
       return ans;
     }
-    private boolean isbanned(String word,String []banned){
-        for(String b:banned){
-             if(b.equals(word))return true;
-        }
-        return false;
-    }
+    
 }
