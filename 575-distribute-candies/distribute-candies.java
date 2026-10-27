@@ -7,14 +7,11 @@ class Solution {
             set.add(num);
         }
 
-        int n = candyType.length;
-        if(n/2==set.size())return n/2;
         
-        if(set.size()>n/2)return n/2;
         
 
 
-      return set.size();
+     return Math.min(set.size(), candyType.length / 2);
 
     }
 }
